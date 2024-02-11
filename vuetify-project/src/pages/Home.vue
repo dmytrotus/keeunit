@@ -11,6 +11,9 @@
         <v-col>
           <v-btn to="/implementation">Go to implementation</v-btn>
         </v-col>
+        <v-col>
+          <v-btn to="/implementation2">Go to implementation 2</v-btn>
+        </v-col>
         <v-spacer></v-spacer>
       </v-row>
 
