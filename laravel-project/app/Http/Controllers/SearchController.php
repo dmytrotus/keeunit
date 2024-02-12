@@ -7,6 +7,25 @@ use App\Models\Movie;
 
 class SearchController extends Controller
 {
+    public function getRes(): JsonResponse
+    {
+        $searchString = request()->movie;
+        $lang = request()->language;
+
+        $results = Movie::withAllTables()
+                ->where('is_visible', true)
+                ->where('language', $lang)
+                ->where('title', 'like', "%{$searchString}%")
+                ->take(10)->get([
+                    'title',
+                    'release_year',
+                    'rating'
+                ]);
+
+        return response()->json($results);
+
+    }
+
     public function getResults(): JsonResponse
     {
         $userData = [
@@ -14,7 +33,7 @@ class SearchController extends Controller
             'language' => 'en',
         ];
 
-        $this->getRes();
+        // return $this->getRes();
         /**
          * Your task is to return real data in this method.
          * Your implementation should focus on being fast, even as the tables get bigger (think 10.000+ users, 10.000+ movies, 1.000.000+ ratings).
