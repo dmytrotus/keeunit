@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use App\Models\Movie;
 
 class SearchController extends Controller
 {
@@ -12,6 +13,8 @@ class SearchController extends Controller
             'id' => 4,
             'language' => 'en',
         ];
+
+        $this->getRes();
         /**
          * Your task is to return real data in this method.
          * Your implementation should focus on being fast, even as the tables get bigger (think 10.000+ users, 10.000+ movies, 1.000.000+ ratings).
